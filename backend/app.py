@@ -21,11 +21,16 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",
-        "https://ai-energy-analytics-frontend.onrender.com",
     ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+)
+
+app.mount(
+    "/assets",
+    StaticFiles(directory=STATIC_DIR / "assets"),
+    name="assets"
 )
 
 # =====================================================
@@ -35,12 +40,6 @@ app.add_middleware(
 @app.get("/")
 def serve_frontend():
     return FileResponse(STATIC_DIR / "index.html")
-
-@app.get("/")
-def home():
-    return {
-        "message": "AI Energy Consumption API is Running"
-    }
 
 # =====================================================
 # Health Check
@@ -109,10 +108,3 @@ def get_predictions():
 @app.get("/{full_path:path}")
 def react_router(full_path: str):
     return FileResponse(STATIC_DIR / "index.html")
-
-
-app.mount(
-    "/assets",
-    StaticFiles(directory=STATIC_DIR / "assets"),
-    name="assets"
-)
