@@ -44,9 +44,6 @@ def main():
     # Select Required Weather Columns
     # =====================================================
 
-    # We don't need all 32 weather columns.
-    # Keeping only useful ones makes training faster.
-
     weather_df = weather_df[
         [
             "time",
