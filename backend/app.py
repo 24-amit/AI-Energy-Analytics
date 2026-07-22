@@ -4,6 +4,12 @@ from firebase_config import db
 from services.predictor import predict_energy
 from models.prediction import PredictionRequest
 from firebase_admin import firestore
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
+STATIC_DIR = BASE_DIR / "static"
 
 app = FastAPI(
     title="AI Energy Consumption Prediction API",
@@ -25,6 +31,10 @@ app.add_middleware(
 # =====================================================
 # Home
 # =====================================================
+
+@app.get("/")
+def serve_frontend():
+    return FileResponse(STATIC_DIR / "index.html")
 
 @app.get("/")
 def home():
@@ -94,3 +104,15 @@ def get_predictions():
         })
 
     return prediction_list
+
+
+@app.get("/{full_path:path}")
+def react_router(full_path: str):
+    return FileResponse(STATIC_DIR / "index.html")
+
+
+app.mount(
+    "/assets",
+    StaticFiles(directory=STATIC_DIR / "assets"),
+    name="assets"
+)
