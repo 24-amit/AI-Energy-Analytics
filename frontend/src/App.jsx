@@ -4,10 +4,11 @@ import PredictionForm from "./components/PredictionForm";
 import PredictionHistory from "./components/PredictionHistory";
 import DashboardStats from "./components/DashboardStats";
 import EnergyChart from "./components/EnergyChart";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
   const [refreshTrigger, setRefreshTrigger] = useState(0);
-
   const [predictions, setPredictions] = useState([]);
 
   function handlePredictionSuccess() {
@@ -15,24 +16,30 @@ function App() {
   }
 
   return (
-    <div className="container my-5">
-      <h1 className="text-center mb-2">⚡ AI Energy Analytics Dashboard</h1>
+    <>
+      <Navbar />
 
-      <p className="text-center text-muted mb-5">
-        Smart Meter Energy Consumption Forecasting using AI
-      </p>
+      <div className="container my-5">
+        <h1 className="text-center mb-2">⚡ AI Energy Analytics Dashboard</h1>
 
-      <DashboardStats predictions={predictions} />
+        <p className="text-center text-muted mb-5">
+          Smart Meter Energy Consumption Forecasting using AI
+        </p>
 
-      <EnergyChart predictions={predictions} />
+        <DashboardStats predictions={predictions} />
 
-      <PredictionForm onPredictionSuccess={handlePredictionSuccess} />
+        <EnergyChart predictions={predictions} />
 
-      <PredictionHistory
-        refreshTrigger={refreshTrigger}
-        onDataLoaded={setPredictions}
-      />
-    </div>
+        <PredictionForm onPredictionSuccess={handlePredictionSuccess} />
+
+        <PredictionHistory
+          refreshTrigger={refreshTrigger}
+          onDataLoaded={setPredictions}
+        />
+      </div>
+
+      <Footer />
+    </>
   );
 }
 
