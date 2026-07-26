@@ -3,22 +3,32 @@ function PredictionInsight({ prediction }) {
 
   let status = "";
   let advice = "";
+  let alertType = "";
 
   if (prediction < 15) {
     status = "Low Consumption";
-    advice = "Energy usage is efficient.";
+    advice =
+      "Energy usage appears efficient. Current consumption is below average.";
+    alertType = "success";
   } else if (prediction < 30) {
     status = "Moderate Consumption";
-    advice = "Usage is within normal range.";
+    advice =
+      "Energy consumption is within the normal range for a household.";
+    alertType = "warning";
   } else {
     status = "High Consumption";
-    advice = "Consider reducing appliance usage.";
+    advice =
+      "Predicted consumption is high. Consider reducing appliance usage during peak periods.";
+    alertType = "danger";
   }
 
   return (
-    <div className="alert alert-info mt-3">
+    <div className={`alert alert-${alertType} mt-4 shadow`}>
       <h5>{status}</h5>
-      <p>{advice}</p>
+
+      <p className="mb-0">
+        <strong>Recommendation:</strong> {advice}
+      </p>
     </div>
   );
 }
