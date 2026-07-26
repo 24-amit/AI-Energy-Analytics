@@ -97,7 +97,9 @@ function PredictionForm({ onPredictionSuccess }) {
           <div className="row g-4">
             {Object.keys(formData).map((field) => (
               <div className="col-md-3" key={field}>
-                <label className="form-label fw-semibold">{fieldLabels[field]}</label>
+                <label className="form-label fw-semibold text-danger">
+                  TEST LABEL
+                </label>
 
                 <input
                   className="form-control"
