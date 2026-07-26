@@ -14,41 +14,49 @@ function DashboardStats({ predictions }) {
   return (
     <div className="row mb-4">
       <div className="col-md-3 mb-3">
-        <div className="card shadow">
+        <div className="card shadow border-0 h-100">
           <div className="card-body text-center">
-            <h6>Latest Prediction</h6>
+            <h6 className="text-muted">Latest Prediction</h6>
 
-            <h3>{latestPrediction} kWh</h3>
+            <h3 className="display-6 fw-bold text-primary">
+              {latestPrediction} kWh
+            </h3>
           </div>
         </div>
       </div>
 
       <div className="col-md-3 mb-3">
-        <div className="card shadow">
+        <div className="card shadow border-0 h-100">
           <div className="card-body text-center">
-            <h6>Maximum Prediction</h6>
+            <h6 className="text-muted">Maximum Prediction</h6>
 
-            <h3>{maxPrediction} kWh</h3>
+            <h3 className="display-6 fw-bold text-danger">
+              {maxPrediction} kWh
+            </h3>
           </div>
         </div>
       </div>
 
       <div className="col-md-3 mb-3">
-        <div className="card shadow">
+        <div className="card shadow border-0 h-100">
           <div className="card-body text-center">
-            <h6>Average Prediction</h6>
+            <h6 className="text-muted">Average Prediction</h6>
 
-            <h3>{avgPrediction} kWh</h3>
+            <h3 className="display-6 fw-bold text-success">
+              {avgPrediction} kWh
+            </h3>
           </div>
         </div>
       </div>
 
       <div className="col-md-3 mb-3">
-        <div className="card shadow">
+        <div className="card shadow border-0 h-100">
           <div className="card-body text-center">
-            <h6>Total Records</h6>
+            <h6 className="text-muted">Total Records</h6>
 
-            <h3>{predictions.length}</h3>
+            <h3 className="display-6 fw-bold text-dark">
+              {predictions.length}
+            </h3>
           </div>
         </div>
       </div>

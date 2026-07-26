@@ -62,35 +62,49 @@ function PredictionForm({ onPredictionSuccess }) {
       {message && (
         <div
           className={`alert ${
-            message.includes("failed") ? "alert-danger" : "alert-success"
+            message.includes("failed")
+              ? "alert-danger"
+              : "alert-success"
           }`}
         >
           {message}
         </div>
       )}
-      
-      <form onSubmit={handleSubmit}>
-        <div className="row g-4 mt-3">
-          {Object.keys(formData).map((field) => (
-            <div className="col-md-3" key={field}>
-              <label className="form-label">{field}</label>
 
-              <input
-                className="form-control"
-                type="number"
-                step="any"
-                name={field}
-                onChange={handleChange}
-                required
-              />
-            </div>
-          ))}
-        </div>
+      <div className="card shadow border-0 p-4">
+        <h4 className="mb-3">
+          Energy Consumption Prediction
+        </h4>
 
-        <button className="btn btn-primary mt-4" type="submit" disabled={loading}>
-          {loading ? "Predicting..." : "Predict"}
-        </button>
-      </form>
+        <form onSubmit={handleSubmit}>
+          <div className="row g-4">
+            {Object.keys(formData).map((field) => (
+              <div className="col-md-3" key={field}>
+                <label className="form-label fw-semibold">
+                  {field}
+                </label>
+
+                <input
+                  className="form-control"
+                  type="number"
+                  step="any"
+                  name={field}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            ))}
+          </div>
+
+          <button
+            className="btn btn-success btn-lg mt-4"
+            type="submit"
+            disabled={loading}
+          >
+            {loading ? "Predicting..." : "Predict"}
+          </button>
+        </form>
+      </div>
 
       <PredictionResult prediction={prediction} />
     </>
