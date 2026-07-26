@@ -1,5 +1,3 @@
-console.log("NEW PREDICTION FORM LOADED");
-
 import { useState } from "react";
 import API from "../services/api";
 import PredictionResult from "./PredictionResult";
