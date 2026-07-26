@@ -1,49 +1,86 @@
-# AI Energy Analytics System
+# ⚡ AI Energy Analytics Dashboard
 
-An AI-powered energy consumption forecasting system built using Smart Meter data from the London Smart Meter Dataset. The application predicts future energy usage, stores prediction results, and provides interactive visualizations through a web dashboard.
+An AI-powered Energy Consumption Forecasting Platform built using React, FastAPI, Firebase Firestore, and XGBoost. The system predicts household energy consumption based on historical smart meter usage and weather conditions, providing real-time analytics through an interactive dashboard.
 
-## Project Overview
+---
 
-This project uses Machine Learning to analyze historical smart meter readings and forecast future energy consumption. The goal is to help users understand usage patterns, monitor consumption trends, and make data-driven energy optimization decisions.
+## 🚀 Live Demo
 
-## Features
+**Application:** https://ai-energy-analytics.onrender.com
 
-* Energy consumption forecasting using XGBoost
-* REST API built with FastAPI
-* Firebase Firestore integration
-* Interactive React dashboard
-* Real-time prediction visualization
-* Historical consumption analysis
-* Responsive user interface
-* Cloud deployment support
+**GitHub Repository:** https://github.com/24-amit/AI-Energy-Analytics
 
-## Tech Stack
+---
+
+## 📌 Project Overview
+
+Energy consumption forecasting is essential for efficient energy management and sustainability planning. This project leverages Machine Learning and Smart Meter data to predict future household energy usage.
+
+The application allows users to:
+
+- Enter historical energy consumption values
+- Provide weather-related parameters
+- Generate AI-based energy predictions
+- Store prediction history in Firebase Firestore
+- Visualize trends through charts and KPI dashboards
+
+---
+
+## ✨ Features
+
+### 🤖 AI-Based Prediction
+- XGBoost Regression Model
+- Real-time energy consumption forecasting
+
+### 📊 Interactive Dashboard
+- Latest Prediction KPI
+- Maximum Prediction KPI
+- Average Prediction KPI
+- Total Records KPI
+
+### 📈 Energy Trend Visualization
+- Dynamic energy prediction charts
+- Historical trend analysis
+
+### 📝 Prediction History
+- Stores prediction records in Firebase Firestore
+- Displays recent prediction history
+
+### ☁️ Cloud Deployment
+- Backend deployed on Render
+- Frontend integrated with FastAPI backend
+- Firebase Firestore cloud database
+
+---
+
+## 🛠 Tech Stack
 
 ### Frontend
-
-* React.js
-* Axios
-* Chart.js / Recharts
-* CSS
+- React.js
+- Bootstrap 5
+- Axios
+- Recharts
 
 ### Backend
+- FastAPI
+- Python
+- Uvicorn
 
-* FastAPI
-* Uvicorn
-* Pandas
-* NumPy
-* XGBoost
-* Joblib
+### Machine Learning
+- XGBoost
+- Pandas
+- NumPy
+- Scikit-Learn
 
 ### Database
-
-* Firebase Firestore
+- Firebase Firestore
 
 ### Deployment
+- Render
 
-* Render
+---
 
-## Dataset
+## 📂 Dataset Information
 
 Dataset Used:
 
@@ -52,98 +89,141 @@ Dataset Used:
 Source:
 https://www.kaggle.com/datasets/jeanmidev/smart-meters-in-london
 
-Files used:
+Data Sources Used:
 
-* Half-hourly energy consumption data
-* Weather data
-* Household information
+- Daily Energy Consumption Dataset
+- Weather Dataset
+- Smart Meter Historical Usage Data
 
-## Project Structure
+---
+
+## 🔄 Data Processing Pipeline
+
+### Data Cleaning
+- Removed missing values
+- Converted date columns into datetime format
+
+### Feature Engineering
+
+Historical Features:
+
+- lag_1
+- lag_2
+- lag_3
+- rolling_7
+
+Weather Features:
+
+- temperatureMax
+- temperatureMin
+- humidity
+- windSpeed
+- pressure
+
+Date Features:
+
+- year
+- month
+- day_of_month
+- day_of_week
+- week_of_year
+
+---
+
+## 🧠 Machine Learning Model
+
+### Algorithm
+XGBoost Regressor
+
+### Train-Test Split
+- Training Data: 70,356 records
+- Testing Data: 17,590 records
+
+---
+
+## 📊 Model Performance
+
+| Metric | Score |
+|----------|----------|
+| MAE | 2.0630 |
+| RMSE | 3.4647 |
+| R² Score | 0.8449 |
+
+---
+
+## 📸 Screenshots
+
+### KPI Dashboard
+
+![KPI Dashboard](frontend/public/screenshots/KPI%20Cards.png)
+
+### Prediction Form
+
+![Prediction Form](frontend/public/screenshots/Prediction%20Form.png)
+
+### Prediction History
+
+![Prediction History](frontend/public/screenshots/Prediction%20History.png)
+
+### Energy Trend Chart
+
+![Energy Trend Chart](frontend/public/screenshots/Energy%20Trend%20Chart.png)
+
+---
+
+## 📁 Project Structure
 
 ```text
-AI-Energy-Analytics/
+AI-Energy-Analytics
 │
-├── backend/
-|   ├── data/
+├── backend
 │   ├── app.py
-│   ├── train_model.py
 │   ├── firebase_config.py
 │   ├── model.pkl
-│   ├── requirements.txt
-│   └── serviceAccountKey.json
+│   ├── train_model.py
+│   ├── services
+│   ├── models
+│   └── requirements.txt
 │
-├── frontend/
-│   ├── src/
-│   ├── public/
-│   ├── package.json
-│   └── vite.config.js
+├── frontend
+│   ├── src
+│   │   ├── components
+│   │   ├── services
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   │
+│   ├── public
+│   │   └── screenshots
+│   │
+│   └── package.json
 │
 └── README.md
 ```
 
-## Machine Learning Pipeline
+---
 
-### Data Preprocessing
+## ⚙️ Installation & Setup
 
-* Handle missing values
-* Convert timestamps to datetime format
-* Generate time-based features:
-
-  * Hour
-  * Day
-  * Month
-  * Day of Week
-* Create lag features
-* Create rolling average features
-
-### Model Training
-
-```python
-XGBRegressor(
-    n_estimators=300,
-    learning_rate=0.05,
-    max_depth=6
-)
-```
-
-### Evaluation Metrics
-
-* MAE (Mean Absolute Error)
-* RMSE (Root Mean Squared Error)
-* R² Score
-
-## Installation
-
-### Clone Repository
+### 1. Clone Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/AI-Energy-Analytics.git
+git clone https://github.com/24-amit/AI-Energy-Analytics.git
 cd AI-Energy-Analytics
 ```
 
----
-
-### Backend Setup
-
-Create virtual environment:
+### 2. Backend Setup
 
 ```bash
+cd backend
+
 python -m venv venv
-```
 
-Activate environment:
-
-```bash
 venv\Scripts\activate
-```
 
-Install dependencies:
-
-```bash
 pip install -r requirements.txt
 ```
 
-Run API:
+Run Backend:
 
 ```bash
 uvicorn app:app --reload
@@ -157,23 +237,13 @@ http://127.0.0.1:8000
 
 ---
 
-### Frontend Setup
-
-Navigate to frontend folder:
+### 3. Frontend Setup
 
 ```bash
 cd frontend
-```
 
-Install packages:
-
-```bash
 npm install
-```
 
-Run development server:
-
-```bash
 npm run dev
 ```
 
@@ -183,20 +253,20 @@ Frontend URL:
 http://localhost:5173
 ```
 
-## API Endpoints
+---
 
-### Health Check
+## 🔥 API Endpoints
+
+### Home
 
 ```http
 GET /
 ```
 
-Response:
+### Health Check
 
-```json
-{
-  "message": "AI Energy Analytics API Running"
-}
+```http
+GET /health
 ```
 
 ### Predict Energy Consumption
@@ -205,90 +275,34 @@ Response:
 POST /predict
 ```
 
-Example Request:
+### Get Prediction History
 
-```json
-{
-  "lag_1": 125,
-  "lag_2": 6758,
-  "lag_3": 876,
-  "rolling_7": 69,
-  "temperatureMax": 30,
-  "temperatureMin": 20,
-  "humidity": 70
-}
+```http
+GET /predictions
 ```
 
-Example Response:
+---
 
-```json
-{
-  "predicted_energy": 152.43
-}
-```
+## 🎯 Future Enhancements
 
-## Firebase Integration
+- User Authentication
+- Energy Saving Recommendations
+- Advanced Forecasting Models
+- Monthly and Yearly Forecast Reports
+- Export Predictions to CSV/PDF
+- Real-Time Smart Meter Integration
 
-Prediction results are automatically stored in Firestore.
+---
 
-Example document:
-
-```json
-{
-  "timestamp": "2026-07-21T10:30:00",
-  "prediction": 152.43
-}
-```
-
-## Deployment
-
-### Backend (Render)
-
-1. Push project to GitHub
-2. Create a Web Service on Render
-3. Connect GitHub repository
-4. Add environment variables
-5. Deploy
-
-Start Command:
-
-```bash
-uvicorn app:app --host 0.0.0.0 --port $PORT
-```
-
-### Frontend (Render)
-
-Build Command:
-
-```bash
-npm install && npm run build
-```
-
-Publish Directory:
-
-```text
-dist
-```
-
-## Future Improvements
-
-* User authentication
-* Advanced forecasting models
-* Energy anomaly detection
-* Personalized energy-saving recommendations
-* Real-time smart meter integration
-* AI-powered analytics reports
-
-## Author
+## 👨‍💻 Author
 
 **Amit**
 
-MCA Student
+GitHub:
+https://github.com/24-amit
 
-LinkedIn: https://www.linkedin.com/in/24amit/
+---
 
-GitHub: https://github.com/24-amit
+## 📄 License
 
-## License
-
-This project is licensed under the MIT License.
+This project is developed for educational, academic, and internship purposes.
