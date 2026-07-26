@@ -1,3 +1,5 @@
+console.log("NEW PREDICTION FORM LOADED");
+
 import { useState } from "react";
 import API from "../services/api";
 import PredictionResult from "./PredictionResult";
@@ -104,7 +106,6 @@ function PredictionForm({ onPredictionSuccess }) {
                   type="number"
                   step="any"
                   name={field}
-                  placeholder={fieldLabels[field]}
                   onChange={handleChange}
                   required
                 />
