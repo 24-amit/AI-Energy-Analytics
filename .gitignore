@@ -1,0 +1,27 @@
+# Environments & Dependencies
+venv/
+.venv/
+node_modules/
+package.json
+package-lock.json
+
+# IDE / Editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Secrets & Local Configs
+.env
+*.env
+serviceAccountKey.json
+backend/serviceAccountKey.json
+backend/.env
+
+# Build outputs & caches
+dist/
+dist-ssr/
+__pycache__/
+*.pyc
+.pytest_cache/
+backend/static/

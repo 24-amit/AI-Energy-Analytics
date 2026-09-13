@@ -1,38 +1,35 @@
-import { useState } from "react";
-
-import PredictionForm from "./components/PredictionForm";
-import PredictionHistory from "./components/PredictionHistory";
-import DashboardStats from "./components/DashboardStats";
-import EnergyChart from "./components/EnergyChart";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import HomePage from "./pages/HomePage";
+import DashboardPage from "./pages/DashboardPage";
+import PredictionPage from "./pages/PredictionPage";
+import HistoryPage from "./pages/HistoryPage";
+import TipsPage from "./pages/TipsPage";
+import ReportsPage from "./pages/ReportsPage";
+import AboutPage from "./pages/AboutPage";
 
 function App() {
-  const [refreshTrigger, setRefreshTrigger] = useState(0);
-
-  const [predictions, setPredictions] = useState([]);
-
-  function handlePredictionSuccess() {
-    setRefreshTrigger((prev) => prev + 1);
-  }
-
   return (
-    <div className="container my-5">
-      <h1 className="text-center mb-2">⚡ AI Energy Analytics Dashboard</h1>
+    <BrowserRouter>
+      <div className="d-flex flex-column min-vh-100 bg-light">
+        <Navbar />
 
-      <p className="text-center text-muted mb-5">
-        Smart Meter Energy Consumption Forecasting using AI
-      </p>
+        <main className="container my-4 flex-grow-1">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/predict" element={<PredictionPage />} />
+            <Route path="/history" element={<HistoryPage />} />
+            <Route path="/tips" element={<TipsPage />} />
+            <Route path="/reports" element={<ReportsPage />} />
+            <Route path="/about" element={<AboutPage />} />
+          </Routes>
+        </main>
 
-      <DashboardStats predictions={predictions} />
-
-      <EnergyChart predictions={predictions} />
-
-      <PredictionForm onPredictionSuccess={handlePredictionSuccess} />
-
-      <PredictionHistory
-        refreshTrigger={refreshTrigger}
-        onDataLoaded={setPredictions}
-      />
-    </div>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
 
