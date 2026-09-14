@@ -93,8 +93,8 @@ function AboutPage() {
         <div className="card-body d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
           <div>
             <span className="badge bg-warning text-dark mb-2 fw-bold">AI Energy Analytics Platform</span>
-            <h4 className="fw-bold mb-1">Developer: Amit</h4>
-            <p className="text-muted mb-0 small">Full Stack & AI Developer</p>
+            <h4 className="fw-bold mb-1 text-white">Developer: Amit</h4>
+            <p className="mb-0 small text-light opacity-75">Full Stack & AI Developer</p>
           </div>
           <div className="d-flex gap-2">
             <a href="https://github.com/24-amit" target="_blank" rel="noreferrer" className="btn btn-outline-light">

@@ -34,7 +34,7 @@ if (STATIC_DIR / "assets").exists():
     )
 
 # =====================================================
-# Home & Health
+# Home, Favicon & Health
 # =====================================================
 
 @app.get("/health")
@@ -44,6 +44,20 @@ def health():
         "service": "AI Energy Consumption Forecasting API",
         "model": "XGBoost Regressor"
     }
+
+@app.get("/favicon.ico")
+def get_favicon_ico():
+    fav = STATIC_DIR / "favicon.svg"
+    if fav.exists():
+        return FileResponse(fav, media_type="image/svg+xml")
+    return {"message": "Favicon not found"}
+
+@app.get("/favicon.svg")
+def get_favicon_svg():
+    fav = STATIC_DIR / "favicon.svg"
+    if fav.exists():
+        return FileResponse(fav, media_type="image/svg+xml")
+    return {"message": "Favicon not found"}
 
 # =====================================================
 # Prediction API
