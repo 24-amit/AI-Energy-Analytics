@@ -94,7 +94,7 @@ function AboutPage() {
           <div>
             <span className="badge bg-warning text-dark mb-2 fw-bold">AI Energy Analytics Platform</span>
             <h4 className="fw-bold mb-1">Developer: Amit</h4>
-            <p className="text-muted mb-0 small">Celebal Technologies Intern</p>
+            <p className="text-muted mb-0 small">Full Stack & AI Developer</p>
           </div>
           <div className="d-flex gap-2">
             <a href="https://github.com/24-amit" target="_blank" rel="noreferrer" className="btn btn-outline-light">

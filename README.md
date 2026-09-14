@@ -165,7 +165,7 @@ Frontend will be running at `http://localhost:5173`.
 ## 👤 Author
 
 **Amit**  
-Celebal Technologies Intern  
+Full Stack & AI Developer  
 🔗 **LinkedIn:** [linkedin.com/in/24amit/](https://www.linkedin.com/in/24amit/)  
 🐙 **GitHub:** [github.com/24-amit](https://github.com/24-amit)
 
